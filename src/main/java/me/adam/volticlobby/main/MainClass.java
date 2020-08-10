@@ -1,5 +1,6 @@
 package me.adam.volticlobby.main;
 
+import me.adam.volticlobby.events.PlayerJoin;
 import me.adam.volticlobby.events.SignBreak;
 import me.adam.volticlobby.events.SignInteractEvent;
 import me.adam.volticlobby.events.SignPlace;
@@ -15,8 +16,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.concurrent.CompletableFuture;
-
 public class MainClass extends JavaPlugin {
     private static MainClass instance;
     private Plugin plugin = this;
@@ -28,6 +27,7 @@ public class MainClass extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SignInteractEvent(), this);
         getServer().getPluginManager().registerEvents(new SignPlace(), this);
         getServer().getPluginManager().registerEvents(new SignBreak(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessage());
         beginStatusCheck();
