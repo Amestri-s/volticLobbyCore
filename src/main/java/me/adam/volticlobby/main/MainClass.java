@@ -37,6 +37,8 @@ public class MainClass extends JavaPlugin {
 
     public void onDisable(){
         getLogger().info("Goodbye");
+        Bukkit.getScheduler().cancelTasks(this);
+        Bukkit.getScheduler().getPendingTasks().clear();
     }
 
     public static MainClass getInstance(){
