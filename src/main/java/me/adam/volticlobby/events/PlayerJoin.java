@@ -2,7 +2,6 @@ package me.adam.volticlobby.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -34,7 +33,7 @@ public class PlayerJoin implements Listener {
         ItemStack itemStack = new ItemStack(Material.COMPASS);
         ItemMeta itemMeta = itemStack.getItemMeta();
 
-        itemMeta.setDisplayName(ChatColor.GREEN + "Select Game");
+        itemMeta.setDisplayName(ChatColor.GREEN + "Select game");
         itemMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
         itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
