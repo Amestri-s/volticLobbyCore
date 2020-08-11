@@ -1,9 +1,6 @@
 package me.adam.volticlobby.main;
 
-import me.adam.volticlobby.events.PlayerJoin;
-import me.adam.volticlobby.events.SignBreak;
-import me.adam.volticlobby.events.SignInteractEvent;
-import me.adam.volticlobby.events.SignPlace;
+import me.adam.volticlobby.events.*;
 import me.adam.volticlobby.utils.PluginMessage;
 import me.adam.volticlobby.utils.Server;
 import org.bukkit.Bukkit;
@@ -28,6 +25,7 @@ public class MainClass extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SignPlace(), this);
         getServer().getPluginManager().registerEvents(new SignBreak(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new OpenGUI(), this);
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessage());
         beginStatusCheck();

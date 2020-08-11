@@ -2,6 +2,7 @@ package me.adam.volticlobby.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -33,7 +34,7 @@ public class PlayerJoin implements Listener {
         ItemStack itemStack = new ItemStack(Material.COMPASS);
         ItemMeta itemMeta = itemStack.getItemMeta();
 
-        itemMeta.setDisplayName(ChatColor.GREEN + "Select game");
+        itemMeta.setDisplayName(ChatColor.GREEN + "Select Game");
         itemMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
         itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -56,7 +57,7 @@ public class PlayerJoin implements Listener {
         SkullMeta skullMeta = (SkullMeta) itemStack1.getItemMeta();
 
         skullMeta.setOwningPlayer(player);
-        skullMeta.setDisplayName(ChatColor.GREEN + "Your profile");
+        skullMeta.setDisplayName(ChatColor.GREEN + "Your Profile");
 
         ArrayList<String> lore1 = new ArrayList<String>();
         lore1.add(" ");
@@ -71,6 +72,11 @@ public class PlayerJoin implements Listener {
 
         player.getInventory().setItem(2, itemStack1);
 
+        player.setGameMode(GameMode.ADVENTURE);
+        player.setPlayerListHeader("§a§lVOLTIC MC");
+        player.setPlayerListFooter("§aIP: §fplay.volticmc.net");
+        player.setPlayerListHeaderFooter("         §a§lVOLTIC MC         ", "         §aIP: §fplay.volticmc.net         ");
+        event.setJoinMessage("");
         bar.addPlayer(player);
 
 
