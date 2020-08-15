@@ -1,6 +1,7 @@
 package me.adam.volticlobby.main;
 
 import me.adam.volticlobby.events.*;
+import me.adam.volticlobby.utils.MongoDB;
 import me.adam.volticlobby.utils.PluginMessage;
 import me.adam.volticlobby.utils.Server;
 import org.bukkit.Bukkit;

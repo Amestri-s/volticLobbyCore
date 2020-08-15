@@ -1,5 +1,6 @@
 package me.adam.volticlobby.events;
 
+import me.adam.volticlobby.main.MainClass;
 import me.adam.volticlobby.utils.MongoDB;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

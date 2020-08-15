@@ -5,6 +5,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bukkit.Bukkit;
 
 import java.text.DateFormat;
@@ -19,19 +20,42 @@ public class MongoDB {
     MongoDatabase mongoDatabase = mongoClient.getDatabase("Voltic");
     MongoCollection<Document> collection = mongoDatabase.getCollection("Global");
 
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
     public void checkForProfile(UUID uuid){
         Document profile = collection.find(new Document("uuid", uuid.toString())).first();
         if(profile == null){
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
 
             Document newProfile = new Document("uuid", uuid.toString());
             newProfile.append("xp", 0);
-            newProfile.append("level", 0);
             newProfile.append("firstJoined", dateFormat.format(date));
             newProfile.append("lastPlayed", dateFormat.format(date));
             collection.insertOne(newProfile);
+        }else{
+            Date date = new Date();
+
+            Bson updateValue = new Document("lastPlayed", dateFormat.format(date));
+            Bson updateOp = new Document("$set", updateValue);
+
+            collection.updateOne(profile, updateOp);
         }
+    }
+
+    public String getJoined(UUID uuid){
+        Document profile = collection.find(new Document("uuid", uuid.toString())).first();
+        return profile.getString("firstJoined");
+    }
+
+    public String getPlayed(UUID uuid){
+        Document profile = collection.find(new Document("uuid", uuid.toString())).first();
+        return profile.getString("lastPlayed");
+    }
+
+    public int getXP(UUID uuid){
+        Document profile = collection.find(new Document("uuid", uuid.toString())).first();
+        return profile.getInteger("xp");
+
     }
 
 
