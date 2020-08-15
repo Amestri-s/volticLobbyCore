@@ -27,14 +27,10 @@ public class OpenGUI implements Listener {
                 itemCreator.createGameIcon(Material.TNT, inventory, 11, "TNT Game", "MINIGAME", "Battle it out by", "blowing up players");
                 itemCreator.createGameIcon(Material.SPAWNER, inventory, 13, "Beasts", "MINIGAME", "Collect keys and", "destroy beasts");
                 itemCreator.createGameIcon(Material.DIAMOND_SWORD, inventory, 15, "Murder Mystery","MINIGAME", "Become a detective solving crime", "or lurk around causing chaos.");
-
-                for(int i = 0; i < 27; i++){
-                    if (inventory.getItem(i) == null){
-                        ItemStack filler = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
-                        inventory.setItem(i, filler);
-                    }
-                }
+                itemCreator.createFillers(inventory);
                 event.getPlayer().openInventory(inventory);
+            }else if(itemStack.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "")){
+
             }
         }
     }

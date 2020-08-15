@@ -26,6 +26,7 @@ public class MainClass extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SignBreak(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new OpenGUI(), this);
+        getServer().getPluginManager().registerEvents(new IllegalActions(), this);
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessage());
         beginStatusCheck();

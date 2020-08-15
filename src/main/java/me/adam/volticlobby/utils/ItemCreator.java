@@ -30,4 +30,13 @@ public class ItemCreator {
         inv.setItem(Slot, item);
 
     }
+
+    public void createFillers(Inventory inv){
+        for(int i = 0; i < inv.getSize(); i++){
+            if (inv.getItem(i) == null){
+                ItemStack filler = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+                inv.setItem(i, filler);
+            }
+        }
+    }
 }

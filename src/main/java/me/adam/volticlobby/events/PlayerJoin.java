@@ -1,5 +1,6 @@
 package me.adam.volticlobby.events;
 
+import me.adam.volticlobby.utils.MongoDB;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 public class PlayerJoin implements Listener {
 
     BossBar bar = Bukkit.createBossBar("§a§lVOLTIC MC §f- CUSTOM MINIGAMES", BarColor.GREEN, BarStyle.SOLID);
+    MongoDB mongoDB = new MongoDB();
 
     @EventHandler
     public void joinServer(PlayerJoinEvent event){
@@ -29,6 +31,8 @@ public class PlayerJoin implements Listener {
         player.getInventory().clear();
         player.setHealth(20);
         player.setFoodLevel(20);
+
+        mongoDB.checkForProfile(player.getUniqueId());
 
         //Select game item
         ItemStack itemStack = new ItemStack(Material.COMPASS);
